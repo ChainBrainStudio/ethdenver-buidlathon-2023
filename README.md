@@ -47,6 +47,7 @@ Link to our Notion page: https://www.notion.so/ETH-Denver-2023-Hackathon-Project
   - MacBook M1/M2: `To define`
 - Verify the setup by running tests: `poetry run test`
 - Export entrypoint: `export FLASK_APP=app`
+- Install backend requirements: `pip install -r requirements.txt`
 - Run the server to get the backend working: `python -m flask run`
 - For the frontend:`cd frontend` and then run `npm install` (note if you run into any issues you can run `npm install --force`)
 
