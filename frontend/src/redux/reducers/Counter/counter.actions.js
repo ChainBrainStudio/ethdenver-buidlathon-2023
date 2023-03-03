@@ -1,4 +1,4 @@
-import {  SETDATA, API_CALLED } from './counter.types';
+import {  SETDATA, API_CALLED, SUCCESS } from './counter.types';
 
 
 export const setData = (data) => {
@@ -10,6 +10,13 @@ export const setData = (data) => {
 
     };
 
+};
+
+export const itemSuccess = (data) => {
+  return {
+    type: SUCCESS,
+    data: data,
+  };
 };
 
 export const apiCalled = (data) => {

@@ -5,19 +5,36 @@ import CustomizedInputBase from './Components/CustomizedInputBase';
 import ColumnGroupingTable from './Components/table';
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
-
-
+import { useEffect, useState } from 'react';
+import { Buffer } from 'buffer';
+import NavBar from './Components/navBar';
+// @ts-ignore
+window.Buffer = Buffer;
+window.process = process.env;
 function App() {
   const particlesInit = async (main) => {
-    console.log(main);
+    // console.log(main);
 
     // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
     // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
     // starting from v2 you can add only the features you need reducing the bundle size
     await loadFull(main);
   };
+  const [haveMetamask, sethaveMetamask] = useState(true);
+
+  useEffect(() => {
+    const { ethereum } = window;
+    const checkMetamaskAvailability = async () => {
+      if (!ethereum) {
+        sethaveMetamask(false);
+      }
+      sethaveMetamask(true);
+    };
+    checkMetamaskAvailability();
+  }, []);
+
   return (
-    <div className="App" class="particles-js-canvas-el">
+    <div className="App" >
       {/* <canvas class="particles-js-canvas-el" width="1748" height="842" style="width: 100%; height: 100%;"/> */}
       <Particles
       id="tsparticles"
@@ -143,14 +160,20 @@ function App() {
         }
     }}
     />
+    {/* <NavBar /> */}
       <Grid
+      className="grid"
       container
       spacing={0}
       direction="column"
       alignItems="center"
       justifyContent="center"
       style={{ minHeight: '100vh' }}>
-      <CustomizedInputBase/>
+        {/* <Connect haveMetamask={haveMetamask} sethaveMetamask={sethaveMetamask}/> */}
+    {/* <MetamaskWeb3/> */}
+      <CustomizedInputBase />
+      <ColumnGroupingTable/>
+      <ColumnGroupingTable/>
       <ColumnGroupingTable/>
       </Grid>
       {/* <header className="App-header">

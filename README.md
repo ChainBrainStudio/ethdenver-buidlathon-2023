@@ -40,10 +40,19 @@ This is split between 2 services, a frontend and a backend
 - Install `Python 3.9.14` using the Python version management tool and activate that version
 - Setup the backend, ensure you have python 3.9 or great installed
 - `git submodule update --init --recursive` to clone (or update) the `subgraphs` repo in `backend/`
-- `cd backend` and run `pip install -r requirements.txt`
-- Setup .env by copying .env.example to .env and seed with correct data
-- Start the backend app with `flask run`
+- `cd backend` and run the following steps:
+  - run `pip install -r requirements.txt` (Install app requirements)
+  - run `pip install -e .` (Install the 'backend' package)
+  - Setup .env by copying .env.example to .env and seed with correct data
+  - Setup the database with `flask db upgrade`
+  - Start the backend app with `flask run`
 - Visit http://localhost:5000
+
+## Database Debugging
+### Database issues "sqlalchemy.exc.StatementError: (builtins.ValueError) Value"
+Try deleting your `backend/instance` folder, then `flask db upgrade` to bring a new database up to
+the latest app schema.
+
 
 # Running the frontend
 

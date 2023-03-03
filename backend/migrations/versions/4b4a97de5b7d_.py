@@ -1,7 +1,7 @@
-"""empty message
+"""Init DB commit
 
 Revision ID: 4b4a97de5b7d
-Revises: 
+Revises:
 Create Date: 2023-02-28 16:48:02.686125
 
 """

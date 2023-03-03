@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT, SETDATA, API_CALLED } from './counter.types';
+import { SETDATA, API_CALLED } from './counter.types';
 
 
 const INITIAL_STATE = {

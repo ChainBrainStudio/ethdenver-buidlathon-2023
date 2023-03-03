@@ -2,7 +2,7 @@ from flask import request
 from flask_restful import Resource
 from flask_jwt_extended import jwt_required
 from backend.api.schemas import UserSchema
-from backend.models import User
+from backend.models import DashboardQueryResult
 from backend.extensions import db
 from backend.commons.pagination import paginate
 from backend.controllers.api.v1 import APIV1Controller
@@ -40,3 +40,16 @@ class DashboardCreator(Resource):
         response = controller.handle_query_for_dashboard(input_sentence, subgraph)
         print(response)
         return response
+
+
+
+
+class DashboardViewer(Resource):
+    """DashboardViewer Resource
+    """
+    # to enable security uncomment line below
+    # method_decorators = [jwt_required()]
+
+
+    def get(self, dashboard_id):
+        return APIV1Controller().get_dashboard(dashboard_id)

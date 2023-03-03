@@ -12,9 +12,12 @@ RUN mkdir /code
 WORKDIR /code
 
 COPY requirements.txt setup.py tox.ini ./
+
 RUN pip install -U pip
 RUN pip install -r requirements.txt
 RUN pip install -e .
+
+RUN git clone git@github.com:messari/subgraphs.git
 
 COPY backend backend/
 COPY migrations migrations/
