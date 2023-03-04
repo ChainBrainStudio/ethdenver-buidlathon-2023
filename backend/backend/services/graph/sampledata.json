@@ -1,0 +1,29 @@
+{
+    "data": {
+      "proposals": [
+        {
+          "id": "86"
+        }
+      ],
+      "voteDailySnapshots": [
+        {
+          "timestamp": "1677884747",
+          "blockNumber": "16751120",
+          "againstWeightedVotes": "0",
+          "abstainWeightedVotes": "0",
+          "forWeightedVotes": "614962668257407086130180"
+        },
+        {
+          "timestamp": "1677882095",
+          "blockNumber": "16750902",
+          "againstWeightedVotes": "0",
+          "abstainWeightedVotes": "0",
+          "forWeightedVotes": "353001604654166506809891"
+        },
+        {
+          "timestamp": "1677799043",
+          "blockNumber": "16744077",
+          "againstWeightedVotes": "0",
+          "abstainWeightedVotes": "0",
+          "forWeightedVotes": "168885005508323062872471"
+        }]}}
