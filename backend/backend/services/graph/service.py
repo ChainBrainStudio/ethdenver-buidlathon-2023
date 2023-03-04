@@ -66,9 +66,9 @@ class GraphService:
                 for key, val in dict_item.items():
                     if key == "timestamp":
                         # print(dt.datetime.utcfromtimestamp(int(val)).strftime('%Y-%m-%d %H:%M:%S'))
-                        dict_item[key] = dt.datetime.utcfromtimestamp(int(val)).strftime(
-                            "%Y-%m-%d %H:%M:%S"
-                        )
+                        dict_item[key] = dt.datetime.utcfromtimestamp(
+                            int(val)
+                        ).strftime("%Y-%m-%d %H:%M:%S")
             print("formatted data", data)
             return data
         return None
@@ -100,7 +100,6 @@ class GraphService:
                     pass
         df = pd.concat(li)
         df = df.set_index(["protocol", "chain"])
-        print(df.info())
         json_dump = df.to_json(
             indent=2,
             orient="index",

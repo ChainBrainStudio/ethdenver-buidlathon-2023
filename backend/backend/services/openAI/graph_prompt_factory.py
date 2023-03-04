@@ -1,4 +1,3 @@
-
 import importlib
 from backend.services.openAI.prompts import PROTOCOL_TO_PROMPTS
 
@@ -13,7 +12,6 @@ Show only code and do not use sentences.
 SAMPLE_QUERIES_PRE_PROMPT = """
 Here are a list of example queries based on various graphQL schemas.
 {}"""
-
 
 
 class GraphPromptFactory:
@@ -33,7 +31,4 @@ class GraphPromptFactory:
         Take in query from user and prepend sample queries
         """
 
-        return (
-            examples
-            + PRE_PROMPT.format(input)
-        )
+        return examples + PRE_PROMPT.format(input)
