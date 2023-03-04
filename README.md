@@ -6,28 +6,22 @@
   <br />
 </div>
 
-<div align="center">
-<br />
-</div>
-
 ## About
 
 ChatWithTheGraph is an open-source project built for The Graph Protocol ecosystem that allows users to ask ChatGPT to visualize their data and then our frontend displays the results.
 
-Subgraphs we used: 
+## Subgraphs Used
+
+**We created a new SporkDAO Token subgraph**: https://github.com/marissaposner/sporkdao-token-subgraph
+
+**Playground here**: https://thegraph.com/hosted-service/subgraph/marissaposner/sporkdao-toke
 
 We queried the Messart NFT Marketplace subgraphs defined in this schema: https://github.com/messari/subgraphs/blob/master/schema-nft-marketplace.graphql
 Such as:
+
 https://thegraph.com/explorer/subgraphs/AwoxEZbiWLvv6e3QdvdMZw4WDURdGbvPfHmZRc8Dpfz9?view=Playground&chain=mainnet
 
 https://thegraph.com/explorer/subgraphs/GvgkY82DTAkYqRShBbPQMjF1WJyUcknXre3QPWiXrPnS?view=Playground&chain=mainnet
-
-
-Example graph queries are defined here: https://github.com/marissaposner/graph-hackathon-2023/blob/main/graphql_examples.py
-
-Youtube Link to Demo: https://www.youtube.com/watch?v=DmnDch1C8EA
-
-Link to our Notion page: https://www.notion.so/ETH-Denver-2023-Hackathon-Project-40b594f5274e49148fbf9b5cae9cc213
 
 ## Getting Started
 
@@ -73,6 +67,12 @@ If you want to say **thank you** or/and support active development:
   [Medium](https://medium.com/) or your personal blog.
 
 Together, we can make ChatWithTheGraph **better**!
+
+## Background
+
+Link to our Notion page: https://www.notion.so/ETH-Denver-2023-Hackathon-Project-40b594f5274e49148fbf9b5cae9cc213
+
+This project began from a Graph Protocol Hackathon on February 25th, 2023: https://github.com/marissaposner/graph-hackathon-2023
 
 ## Contributing
 
