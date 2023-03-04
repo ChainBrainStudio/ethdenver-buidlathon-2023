@@ -173,8 +173,6 @@ function App() {
     {/* <MetamaskWeb3/> */}
       <CustomizedInputBase />
       <ColumnGroupingTable/>
-      <ColumnGroupingTable/>
-      <ColumnGroupingTable/>
       </Grid>
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />

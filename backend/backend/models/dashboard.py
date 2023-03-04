@@ -11,7 +11,7 @@ class DashboardQueryResult(db.Model):
     chain = db.Column(db.Text, default="ethereum")
     output = db.Column(db.JSON)
     gql_valid = db.Column(db.Integer)
-    user_id = db.Column(db.Integer)
+    user_id = db.Column(db.Text)
 
     def __repr__(self):
         return "<DashboardQueryResult %s>" % self.user_input

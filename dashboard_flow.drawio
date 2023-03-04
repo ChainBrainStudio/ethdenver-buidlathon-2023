@@ -1,0 +1,39 @@
+<mxfile host="65bd71144e">
+    <diagram name="QueryToData" id="RRmpciId2Hh4jt-6YhZj">
+        <mxGraphModel dx="3187" dy="1783" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="4" value="Frontend" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="30" y="80" width="150" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Backend" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="1000" y="70" width="150" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="QU6DeJzNUEyJdpGIUiS0-14" value="&quot;Request data for input&quot; &lt;br&gt;POST /api/v1/dashboard&lt;br&gt;Payload: {input_sentence, protocol, wallet_address(optional)}&lt;br&gt;Response:&lt;br&gt;&lt;br&gt;{output}&lt;br&gt;-&amp;gt;&lt;br&gt;&lt;br&gt;On Success: 200 {&lt;br&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; id = db.Column(db.Integer, primary_key=True)&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; chatgpt_gql = db.Column(db.Text)&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;output = db.Column(db.JSON)&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;error: None&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;}&lt;br&gt;&lt;/span&gt;&lt;br&gt;On Failure: 400 {&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; id = NONE&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; chatgpt_gql = db.Column(db.Text)&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;output = db.Column(db.JSON)&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;error: None&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;}&lt;/span&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="130" y="180" width="670" height="580" as="geometry"/>
+                </mxCell>
+                <mxCell id="QU6DeJzNUEyJdpGIUiS0-17" value="Table&lt;br&gt;DashboardQueryRequest" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="850" y="190" width="430" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="&quot;Save Dashboard For Wallet address&quot; &lt;br&gt;POST /api/v1/dashboard/&amp;lt;id&amp;gt;&lt;br&gt;Payload: {wallet_address, address(optional)}&lt;br&gt;&lt;br&gt;On Success: 200&amp;nbsp;&lt;br&gt;&lt;div&gt;On Failure: 400&amp;nbsp; # if not exists or user already claimed it&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontSize=24;" vertex="1" parent="1">
+                    <mxGeometry x="125" y="790" width="680" height="370" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="&quot;Get dashboards for User&quot; &lt;br&gt;POST /api/v1/dashboard/user/&amp;lt;&amp;nbsp;wallet_address&amp;gt;&lt;br&gt;&lt;br&gt;Response:&lt;br&gt;&lt;br&gt;On Success: 200 [&lt;br&gt;{&lt;br&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; id = db.Column(db.Integer, primary_key=True)&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; chatgpt_gql = db.Column(db.Text)&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;output = db.Column(db.JSON)&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;}&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;] (may be an empty set)&lt;br&gt;&lt;/span&gt;&lt;br&gt;On Failure: 400&amp;nbsp;&lt;br&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontSize=24;" vertex="1" parent="1">
+                    <mxGeometry x="125" y="1180" width="670" height="580" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="&quot;Feedback for dashboard&quot; &lt;br&gt;POST /api/v1/dashboard/&amp;lt;id&amp;gt;/feedback&lt;br&gt;{wallet_address, feedback: 1 or 0} 1 is good, 0 is bad&lt;br&gt;&lt;br&gt;&lt;br&gt;On Success: 200&amp;nbsp;&lt;br&gt;&lt;div&gt;&lt;br&gt;On Failure: 400&amp;nbsp;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontSize=24;" vertex="1" parent="1">
+                    <mxGeometry x="125" y="1830" width="670" height="290" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="5GGXdGrM5uDnyeqmeQt-" name="Design">
+        <mxGraphModel dx="1056" dy="1256" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

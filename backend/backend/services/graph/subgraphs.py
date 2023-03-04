@@ -12,7 +12,6 @@ subgraphs with:
 import glob
 import json
 import os
-
 import yaml
 
 
@@ -23,6 +22,12 @@ class SubgraphService:
         self.deployments = json.load(
             open(os.getcwdb().decode("utf-8") + "/subgraphs/deployment/deployment.json")
         )[protocol]
+        try:
+            # see if deployed on given chain
+            assert f"{protocol}-{chain}" in self.deployments["deployments"]
+        except AssertionError:
+            # protocol is not deployed on given chain
+            raise NotImplementedError(f"no subgraph deployed for {protocol} on {chain}")
         if (
             "decentralized-network"
             in self.deployments["deployments"][f"{protocol}-{chain}"]["services"]
@@ -40,7 +45,7 @@ class SubgraphService:
         except AttributeError:
             # protocol does not have any deployments
             self.query_id = None
-            raise NotImplementedError
+            raise NotImplementedError(f"no subgraphs deployed for {protocol} at all")
         try:
             self.template_file_location = f"subgraphs/subgraphs/{self.deployments['base']}/protocols/{self.protocol}/config/templates/{self.deployments['deployments'][f'{protocol}-{chain}']['files']['template']}"
         except:

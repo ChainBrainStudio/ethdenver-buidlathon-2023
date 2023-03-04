@@ -12,7 +12,7 @@ apispec-webframeworks
 tox
 gunicorn
 Flask-Cors==3.0.10
-openai==0.26.5
+openai==0.27
 openpyxl==3.1.1
 pandas==1.5.3
 pandas-stubs==1.5.3.230214
@@ -20,3 +20,5 @@ pathlib==1.0.1
 pipe==2.0
 pydantic==1.10.5
 python-dotenv==1.0.0
+langchain==0.0.98
+llama-index==0.4.18
