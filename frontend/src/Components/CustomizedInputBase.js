@@ -8,7 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
-import axios from 'axios';
+// import axios from 'axios';
 import { backend_url } from '../constants';
 import {inferLineGraphLabels, recommendVisualization} from './Visulaizations/Utils';
 import {
@@ -19,6 +19,9 @@ import {
 } from "../redux/reducers/Counter/counter.actions"
 import { connect } from 'react-redux';
 import { useSnackbar } from 'notistack';
+import axios from 'axios-https-proxy-fix';
+
+
 
 
 const propmts = ["What NFTs are trending in the last week?", "What is the address for the CryptoPunks collection?"]
@@ -33,6 +36,12 @@ export function CustomizedInputBase(props) {
   const [useLinegraph, setUseLinegraph] = React.useState(Boolean);
 
   const { enqueueSnackbar } = useSnackbar();
+  const proxy = {
+    host: '20.169.226.41',
+    port: "80",
+
+  };
+
   const Search = async (event) => {
     let res;
     event.preventDefault();
@@ -43,7 +52,7 @@ export function CustomizedInputBase(props) {
       res = await axios.post(`${backend_url}/api/v1/dashboard`, {
       input: input,
       subgraph: subgraph,
-    })
+    }, {proxy})
     props.setData(res.data);
 
     props.apiCalled(false);
