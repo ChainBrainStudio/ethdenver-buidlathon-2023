@@ -7,7 +7,7 @@ import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import { useEffect } from 'react';
 import { Buffer } from 'buffer';
-
+import axios from 'axios';
 import HomeComponent from './Home';
 import DashboardComponent from './Dashboard';
 import {   Navigate, Route, Routes, useLocation } from "react-router-dom";
@@ -18,6 +18,7 @@ window.Buffer = Buffer;
 window.process = process.env;
 
 function App(props) {
+
   const particlesInit = async (main) => {
     // console.log(main);
 
@@ -40,7 +41,7 @@ function App(props) {
   }, []);
 
   return (
-    
+
     <div className="App" >
       {/* <canvas class="particles-js-canvas-el" width="1748" height="842" style="width: 100%; height: 100%;"/> */}
       <Particles
@@ -196,15 +197,15 @@ function App(props) {
 }
 const mapStateToProps = state => {
     return {
-      
+
     }
   }
-  
-  
+
+
   const mapDispatchToProps = dispatch => {
     return {
       sethaveMetamask: (data) => dispatch(setHaveMetaMask(data))
     }
   }
-  
+
 export default connect(mapStateToProps, mapDispatchToProps)(App);
