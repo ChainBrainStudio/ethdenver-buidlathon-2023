@@ -158,9 +158,6 @@ export function newDateString(days) {
 
 export function parseISODate(str) {
   return DateTime.fromISO(str);
-<<<<<<< Updated upstream
-}
-=======
 }
 
 export function inferLineGraphLabels(data) {
@@ -213,4 +210,3 @@ export function recommendVisualization(data) {
     return (Object.keys(dataTypeCounts).length > dataTypeCounts.string) ? 'parallel coordinates' : 'heat map';
   }
 }
->>>>>>> Stashed changes
