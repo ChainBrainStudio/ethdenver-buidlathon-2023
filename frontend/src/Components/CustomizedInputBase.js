@@ -45,17 +45,16 @@ export function CustomizedInputBase(props) {
       subgraph: subgraph,
     })
     props.setData(res.data);
+
     props.apiCalled(false);
 
-    console.log(recommendVisualization(res.data?.output));
-    console.log(inferLineGraphLabels(res.data.output))
+    // console.log(recommendVisualization(res.data?.output));
+    // console.log(inferLineGraphLabels(res.data.output))
     if (res.data && res.data.output && res.data?.output.length >1 && recommendVisualization(res.data?.output) === 'line-chart'){
       props.setPredictedVis("line-chart")
-      
       setUseLinegraph(true);
-      setVisualization("line-chart");
+      // setVisualization("line-chart");
      }
-
   }
     catch(error){
       console.log(error)

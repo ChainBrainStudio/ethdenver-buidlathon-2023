@@ -50,3 +50,4 @@ o="""query{
     forWeightedVotes
   }
 }""")
+]

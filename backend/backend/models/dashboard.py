@@ -24,4 +24,5 @@ class DashboardQueryResult(db.Model):
             "subgraph": self.subgraph,
             "chain": self.chain,
             "user_id": self.user_id,
+            "data": self.output,
         }

@@ -158,10 +158,20 @@ export function newDateString(days) {
 
 export function parseISODate(str) {
   return DateTime.fromISO(str);
+
 }
+
 
 export function inferLineGraphLabels(data) {
   return Object.keys(data[0]);
+}
+export function inferLineGraphValues(data) {
+  return Object.keys(data[0]).map(key => {
+    return {
+      label: key,
+      data: data.map(obj => obj[key])
+    };
+  });
 }
 
 export function recommendVisualization(data) {

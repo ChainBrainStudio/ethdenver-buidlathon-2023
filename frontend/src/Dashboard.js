@@ -6,12 +6,15 @@ import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import CustomizedInputBase from './Components/CustomizedInputBase';
+import DashboardHelper from './Components/dashboardHelper';
 import ColumnGroupingTable from './Components/table';
 import { backend_url } from './constants';
 
 function DashboardComponent(props) {
   const [ sending_request, set_sending_request] = useState(false)
   const {wallet_address} = props;
+  
+  let res;
   // const saveDashboard = async ()=>{
 
   //   try{
@@ -32,10 +35,14 @@ function DashboardComponent(props) {
       if(wallet_address){
     try{
       // set_sending_request("true")
-      const res = await axios.get(`${backend_url}/api/v1/dashboard/user/${wallet_address}`, {
-      wallet_address: wallet_address,
-    })
-    // enqueueSnackbar('Saved Dashboard');
+      res = await axios.get(`${backend_url}/api/v1/dashboard/user/${wallet_address}`)
+      if (res.data.length  ===0){
+        enqueueSnackbar('No saved dashboards');
+      }
+      else{
+        enqueueSnackbar('Fetched Dashboards');
+      }
+   
     set_sending_request(false)
     
   }
@@ -44,6 +51,11 @@ function DashboardComponent(props) {
       enqueueSnackbar('Retrieving data failed!!');
     }
   }}
+
+  // const getDashBoardData = async() => {
+  //   const { tableData, setTableData } = useState("");
+
+  // }
   
 
   useEffect(() => {
@@ -51,19 +63,19 @@ function DashboardComponent(props) {
   }, [wallet_address]);
 
   return (
-    <></>
-    // <Grid
-    // className="grid"
-    // container
-    // spacing={0}
-    // direction="column"
-    // alignItems="center"
-    // justifyContent="center"
-    // style={{ minHeight: '100vh' }}>
-
-    // <CustomizedInputBase />
-    // <ColumnGroupingTable/>
-    // </Grid>
+    <Grid
+    className="grid"
+    container
+    spacing={0}
+    direction="column"
+    alignItems="center"
+    justifyContent="center"
+    style={{ minHeight: '100vh' }}>
+     { res?.data && res.data.map((data) => (
+        <DashboardHelper/>
+      ))}
+    
+    </Grid>
   );
 }
 const mapStateToProps = state => {
