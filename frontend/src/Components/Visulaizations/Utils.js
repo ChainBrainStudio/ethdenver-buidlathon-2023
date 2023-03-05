@@ -158,4 +158,59 @@ export function newDateString(days) {
 
 export function parseISODate(str) {
   return DateTime.fromISO(str);
+<<<<<<< Updated upstream
 }
+=======
+}
+
+export function inferLineGraphLabels(data) {
+  return Object.keys(data[0]);
+}
+export function inferLineGraphValues(data) {
+  return Object.keys(data[0]).map(key => {
+    return {
+      label: key,
+      data: data.map(obj => obj[key])
+    };
+  });
+}
+
+export function recommendVisualization(data) {
+  // Determine the data types of each field in the JSON objects
+  const dataTypes = {};
+  data.forEach(obj => {
+    Object.keys(obj).forEach(key => {
+      if (!dataTypes[key]) {
+        dataTypes[key] = typeof obj[key];
+      }
+    });
+  });
+
+  // Count the number of fields with each data type
+  const dataTypeCounts = {};
+  Object.values(dataTypes).forEach(type => {
+    if (!dataTypeCounts[type]) {
+      dataTypeCounts[type] = 0;
+    }
+    dataTypeCounts[type]++;
+  });
+
+
+  // Determine the best visualization based on the data type counts
+  const numFields = Object.keys(dataTypes).length;
+  debugger;
+  if (numFields <= 1) {
+    // Single variable, use histogram or bar chart
+    return (Object.keys(dataTypeCounts).length || dataTypeCounts.string) > 0 ? 'histogram' : null;
+  } else if (numFields === 2) {
+    // Two variables, use scatter plot or line chart
+    return (Object.keys(dataTypeCounts).length === 2) ? 'scatter plot' : 'line-chart';
+  } else if (numFields === 3) {
+    // Three variables, use 3D scatter plot or bubble chart
+    return (Object.keys(dataTypeCounts).length === 3) ? '3D scatter plot' : 'bubble';
+  } else {
+    // More than three variables, use parallel coordinates or heat map
+    return (Object.keys(dataTypeCounts).length > dataTypeCounts.string) ? 'parallel coordinates' : 'heat map';
+  }
+}
+>>>>>>> Stashed changes

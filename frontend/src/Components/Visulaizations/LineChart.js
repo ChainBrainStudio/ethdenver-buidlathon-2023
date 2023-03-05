@@ -2,11 +2,29 @@
 
 import { Paper } from '@mui/material';
 import {  Line } from 'react-chartjs-2';
+<<<<<<< Updated upstream
 
 
 export default function LineVis(){
     
     const labels = ["Jan", "Feb", "Mar", "apr", "may", "jun", "jul"];
+=======
+import { inferLineGraphLabels, inferLineGraphValues } from './Utils';
+
+
+function getFormattedData(data){
+  
+}
+
+export default function LineVis(props){
+
+    // const labels = ["Jan", "Feb", "Mar", "apr", "may", "jun", "jul"];
+    // const [labels, setLabels] = React.useState('');
+    const labels = inferLineGraphLabels(props.raw_data)
+    // console.log(labels)
+    const output = inferLineGraphValues(props.raw_data)
+    console.log(labels, output)
+>>>>>>> Stashed changes
     let data = {
       labels: labels,
       datasets: [{
