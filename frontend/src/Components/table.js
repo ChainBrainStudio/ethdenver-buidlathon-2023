@@ -22,7 +22,7 @@ import Feedback from './input/feedback';
 import Table_ from './Visulaizations/table_';
 
 
-function buildColumns(data){
+export function buildColumns(data){
     let column_header = Object.keys(data[0]);
     var columns = []
 
@@ -80,7 +80,7 @@ export function StickyHeadTable(props) {
     
             <>
             {/* <TypeWriter content={tree} speed={100}/> */}
-          {data?.chatgpt_gql && <Variants text={data.chatgpt_gql}/>}
+          {data?.chatgpt_gql && <Variants text={`GraphQL Query:\n ${data.chatgpt_gql}`}/>}
           {data_present &&  
           <RowRadioButtonsGroup/>}
           {data_present && visualization == "table" && <Table_ rows={rows} columns={columns}/>

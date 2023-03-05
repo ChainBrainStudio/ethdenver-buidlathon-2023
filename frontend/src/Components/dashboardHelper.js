@@ -1,36 +1,33 @@
 // import logo from './logo.svg';
 
+import { CircularProgress } from '@mui/material';
 import React from 'react';
 import { connect } from 'react-redux';
+import Typography_ from './input/typography';
+import { buildColumns } from './table';
+import LineVis from './Visulaizations/LineChart';
+import Table_ from './Visulaizations/table_';
+import Variants from './Visulaizations/textarea';
 import { recommendVisualization } from './Visulaizations/Utils';
 
-function DashboardHelper(props) {
-const {data} = props;
-const [useLinegraph, setUseLinegraph] = React.useState(Boolean);
-//   const saveDashboard = async ()=>{
 
-//     try{
-//       set_sending_request("true")
-//       const res = await axios.post(`${backend_url}/api/v1/dashboard/${data?.id}`, {
-//       wallet_address: wallet_address,
-//     })
-//     // enqueueSnackbar('Saved Dashboard');
-//     set_sending_request(false)
-//   }
-//     catch{
-//       set_sending_request(false)
-//       enqueueSnackbar('Server error!!');
-//     }
-//   }
+function DashboardHelper(props) {
+    const {data, user_input, chatgpt_gql} = props;
+    const columns = buildColumns(data);
+    const rows = data
+    const [useLinegraph, setUseLinegraph] = React.useState(Boolean);
 
 if (data && data.output && data?.output.length >1 && recommendVisualization(data?.output) === 'line-chart'){
-    props.setPredictedVis("line-chart")
     setUseLinegraph(true);
    }
 
   return (
     <>
-     
+        <Typography_  text={`${user_input}`}/>
+        <Variants text={`GraphQL Query:\n ${chatgpt_gql}`}/>
+        <Table_ rows={rows} columns={columns} />
+        {useLinegraph && (<LineVis raw_data={data}/>)}
+        <br/><br/>
     </>
   )
 }

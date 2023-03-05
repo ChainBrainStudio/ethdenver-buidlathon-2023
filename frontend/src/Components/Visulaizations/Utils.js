@@ -197,7 +197,7 @@ export function recommendVisualization(data) {
 
   // Determine the best visualization based on the data type counts
   const numFields = Object.keys(dataTypes).length;
-  debugger;
+  
   if (numFields <= 1) {
     // Single variable, use histogram or bar chart
     return (Object.keys(dataTypeCounts).length || dataTypeCounts.string) > 0 ? 'histogram' : null;

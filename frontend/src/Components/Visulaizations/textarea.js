@@ -14,7 +14,7 @@ const text = `Graph Query:\nSome of our debates seem eternal, `
       <TypeAnimation
             cursor={false}
             sequence={[
-                `GraphQL Query:\n ${props.text}`
+                props.text
             ]}
             speed={80}
             wrapper="pre"

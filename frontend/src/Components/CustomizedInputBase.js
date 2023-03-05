@@ -48,8 +48,8 @@ export function CustomizedInputBase(props) {
 
     props.apiCalled(false);
 
-    // console.log(recommendVisualization(res.data?.output));
-    // console.log(inferLineGraphLabels(res.data.output))
+    console.log(recommendVisualization(res.data?.output));
+    console.log(inferLineGraphLabels(res.data.output))
     if (res.data && res.data.output && res.data?.output.length >1 && recommendVisualization(res.data?.output) === 'line-chart'){
       props.setPredictedVis("line-chart")
       setUseLinegraph(true);
@@ -108,7 +108,7 @@ export function CustomizedInputBase(props) {
           sx={{  height:"55px", marginRight:"5px"}}
           id="sub-graph"
           value={subgraph}
-          label="Subgraph"
+          label="Select subgraph"
           MenuProps={MenuProps}
           onChange={handleCategoryChange}
           defaultValue={subgraph}

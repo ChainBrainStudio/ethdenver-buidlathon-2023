@@ -1,7 +1,7 @@
 
 
 import { Paper } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import {  Line } from 'react-chartjs-2';
 
 import { inferLineGraphLabels, inferLineGraphValues } from './Utils';
@@ -12,6 +12,7 @@ function getFormattedData(data){
 }
 
 export default function LineVis(props){
+  const [datasetIdKey, setdatasetIdKey] = useState();
 
     // const labels = ["Jan", "Feb", "Mar", "apr", "may", "jun", "jul"];
     // const [labels, setLabels] = React.useState('');
@@ -44,7 +45,7 @@ export default function LineVis(props){
     return (
         <Paper variant="outlined" sx={{ height:"350px",alignItems: 'center', width:"700px", marginTop: "10px",
        p:"10px"}} >
-        <Line data={data} options={config} />
+        <Line datasetIdKey={datasetIdKey} data={data} options={config} />
         </Paper>
     )
 }

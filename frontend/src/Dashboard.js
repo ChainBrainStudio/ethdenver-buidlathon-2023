@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import { Grid } from '@mui/material';
+import { CircularProgress, Grid } from '@mui/material';
 import axios from 'axios';
 import { useSnackbar } from 'notistack';
 import { useEffect, useState } from 'react';
@@ -11,10 +11,10 @@ import ColumnGroupingTable from './Components/table';
 import { backend_url } from './constants';
 
 function DashboardComponent(props) {
-  const [ sending_request, set_sending_request] = useState(false)
+  const [ isLoading, setisLoading] = useState(false)
   const {wallet_address} = props;
+  const [res, setres] = useState("");
   
-  let res;
   // const saveDashboard = async ()=>{
 
   //   try{
@@ -34,20 +34,22 @@ function DashboardComponent(props) {
     const getData = async ()=>{
       if(wallet_address){
     try{
+      setisLoading(true)
       // set_sending_request("true")
-      res = await axios.get(`${backend_url}/api/v1/dashboard/user/${wallet_address}`)
-      if (res.data.length  ===0){
-        enqueueSnackbar('No saved dashboards');
-      }
-      else{
-        enqueueSnackbar('Fetched Dashboards');
-      }
-   
-    set_sending_request(false)
-    
+      const response = await axios.get(`${backend_url}/api/v1/dashboard/user/${wallet_address}`)
+      setres(response)
+    //  if(res){
+    //   if (res.data.length  ===0){
+    //     enqueueSnackbar('No saved dashboards');
+    //   }
+    //   else{
+    //     enqueueSnackbar('Fetched Dashboards');
+    //   }}
+      setisLoading(false)
   }
-    catch{
-      set_sending_request(false)
+    catch(error){
+      console.log(error)
+      setisLoading(false)
       enqueueSnackbar('Retrieving data failed!!');
     }
   }}
@@ -61,7 +63,11 @@ function DashboardComponent(props) {
   useEffect(() => {
     getData()
   }, [wallet_address]);
-
+  if(isLoading){
+    return (
+      <CircularProgress sx={{ align: 'center', marginTop:"10px",} }  color="secondary"/>
+  )}
+  else{
   return (
     <Grid
     className="grid"
@@ -70,14 +76,14 @@ function DashboardComponent(props) {
     direction="column"
     alignItems="center"
     justifyContent="center"
-    style={{ minHeight: '100vh' }}>
+    style={{ minHeight: '100vh', marginTop:"74px" }}>
      { res?.data && res.data.map((data) => (
-        <DashboardHelper/>
+        <DashboardHelper data={data.data} user_input={data.user_input} chatgpt_gql={data.chatgpt_gql}/>
       ))}
     
     </Grid>
   );
-}
+}}
 const mapStateToProps = state => {
   return {
     wallet_address: state.counter.wallet_address,
