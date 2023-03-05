@@ -2,20 +2,20 @@
   <h1 align="center">ChatWithTheGraph</h1>
   <img src="images/chainbrainlogo.jpg" height="200">
   <h2 align="center">A solution to view NFTs across protocols with comprehensive subgraphs by training ChatGPT</h2>
-  <h2 align="center">Our submission for the Graph Hackathon at CU Boulder February 2023</h2>
+  <h2 align="center">Our submission for the ETH Denver Hackathon 2023</h2>
 </div>
 
 ## About
 
 ChainBrain is an open-source data visualization tool that allows users to search and generate dashboards for any on-chain data question. With ChainBrain, users can quickly identify patterns, track trends, and discover new insights to help them optimize their strategy and operations. We are using ChatGPT to turn the users' questions into a GraphQL query that we send to various subgraphs by the Graph Protocol. We then pull in the user-requested data and display the results on the frontend. Users can connect with their crypto wallet to sign-in and save visualizations to their personal dashboards.
 
-## Subgraphs we used: 
+## Subgraphs We Used: 
 
-We indexed our own new, subgraph for the SporkDAO Token contract: https://thegraph.com/hosted-service/subgraph/marissaposner/sporkdao-token
+**New Subgraphs:** We indexed our own new, subgraph for the SporkDAO Token contract: https://thegraph.com/hosted-service/subgraph/marissaposner/sporkdao-token
 
 Here is the link to the github repo: https://github.com/marissaposner/sporkdao-token-subgraph
 
-As far as existing subgraphs, we created a submodule in our github repo to automatically update with the Messari Subgraphs (https://github.com/messari/subgraphs). We chose these subgraphs because they have a more standardized schema than other subgraphs and were easier to build an abstraction layer on top of them. 
+**Existing Subgraphs:** As far as existing subgraphs, we created a submodule in our github repo to automatically update with the Messari Subgraphs (https://github.com/messari/subgraphs). We chose these subgraphs because they have a more standardized schema than other subgraphs and were easier to build an abstraction layer on top of them. 
 
 Some of the subgraphs in our demo include AAVE-Governance, Uniswap-V3, Uniswap-governance, Compound-governance, and OpenSea. 
 
