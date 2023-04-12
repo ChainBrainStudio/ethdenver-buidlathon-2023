@@ -36,15 +36,21 @@ class OpenAIService:
     def request_gql_for_graph_llama(self, input_query, subgraph):
         # import regex as re
         graph_service = GraphService(protocol=subgraph)
-        schema = os.path.join(
-            os.getcwdb().decode("utf-8"), graph_service.subgraph.schema_file_location
-        )
-        mappings = mapping_path(graph_service.subgraph.deployments["base"])
-        # examples = os.getcwdb().decode("utf-8")+ "/backend/services/graph/graphql_examples.py"
-        # set recursive = True for case of uniswap etc where there are more sub directories
-        documents = SimpleDirectoryReader(
-            input_dir=mappings, input_files=[schema], recursive=True
-        ).load_data()
+        try:
+            schema = os.path.join(
+                os.getcwdb().decode("utf-8"), graph_service.subgraph.schema_file_location
+            )
+            mappings = mapping_path(graph_service.subgraph.deployments["base"])
+            # examples = os.getcwdb().decode("utf-8")+ "/backend/services/graph/graphql_examples.py"
+            # set recursive = True for case of uniswap etc where there are more sub directories
+            documents = SimpleDirectoryReader(
+                input_dir=mappings, input_files=[schema], recursive=True
+            ).load_data()
+        except FileNotFoundError:
+            mock = os.path.join(
+                os.getcwdb().decode("utf-8"), "subgraphs_custom/mock.graphql"
+            )
+            documents = SimpleDirectoryReader(input_files=[mock]).load_data()
         # print("documents", documents)
         # save to disk
         # index.save_to_disk('index.json')

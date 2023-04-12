@@ -1,6 +1,7 @@
 import datetime as dt
 import json
 import os
+from collections import defaultdict
 
 import pandas as pd
 import requests
@@ -31,14 +32,30 @@ CHAINS = [
     "moonriver",
 ]
 
+NAMESPACES = defaultdict(
+    lambda: "messari",
+    {
+        "sporkdao-token": "marissaposner",
+        # "savvy-lge": "",
+    }
+)
+
+DEV = {
+    "savvy-lge": {
+        "id": 42355,
+        "version": "v0.3.20230322"
+    },
+}
 
 def execute_query_thegraph(subgraph_id, query, hosted=True):
-    namespace = "marissaposner" if subgraph_id == "sporkdao-token" else "messari"
-    if hosted:
-        base_url = f"https://api.thegraph.com/subgraphs/name/{namespace}/"
+    if subgraph_id in DEV:
+        query_url = f"https://api.studio.thegraph.com/query/{DEV[subgraph_id]['id']}/{subgraph_id}/{DEV[subgraph_id]['version']}"
     else:
-        base_url = f"https://gateway.thegraph.com/api/{THEGRAPH_API_KEY}/subgraphs/id/"
-    query_url = f"{base_url}{subgraph_id}"
+        if hosted:
+            base_url = f"https://api.thegraph.com/subgraphs/name/{NAMESPACES[subgraph_id]}/"
+        else:
+            base_url = f"https://gateway.thegraph.com/api/{THEGRAPH_API_KEY}/subgraphs/id/"
+        query_url = f"{base_url}{subgraph_id}"
     r = requests.post(query_url, json={"query": query})
     r.raise_for_status()
     try:
