@@ -76,7 +76,15 @@ export function CustomizedInputBase(props) {
 
   };
 
-  const subgraphs = [{"id": "uniswap-v3", "subgraph": "uniswap-v3"},{"id": "opensea-v2", "subgraph": "opensea-v2"},{"id": "compound-governance", "subgraph": "compound-governance"},{"id": "sporkdao-token", "subgraph": "sporkdao-token"},{"id": "aave-governance", "subgraph": "aave-governance"},{"id": "uniswap-governance", "subgraph": "uniswap-governance"}];
+  const subgraphs = [
+    {"id": "uniswap-v3", "subgraph": "uniswap-v3"},
+    {"id": "opensea-v2", "subgraph": "opensea-v2"},
+    {"id": "compound-governance", "subgraph": "compound-governance"},
+    {"id": "sporkdao-token", "subgraph": "sporkdao-token"},
+    {"id": "aave-governance", "subgraph": "aave-governance"},
+    {"id": "uniswap-governance", "subgraph": "uniswap-governance"},
+    {"id": "savvy-lge", "subgraph": "savvy-lge"},
+  ];
   const ITEM_HEIGHT = 35;
   const ITEM_PADDING_TOP = 8;
   const MenuProps = {
