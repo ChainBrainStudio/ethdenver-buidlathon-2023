@@ -17,7 +17,8 @@ RUN pip install -U pip
 RUN pip install -r requirements.txt
 RUN pip install -e .
 
-RUN git clone git@github.com:messari/subgraphs.git
+RUN git clone https://github.com/messari/subgraphs.git backend/subgraphs
+RUN git clone https://github.com/marissaposner/sporkdao-token-subgraph.git backend/subgraphs_custom/sporkdao-token
 
 COPY backend backend/
 COPY migrations migrations/
