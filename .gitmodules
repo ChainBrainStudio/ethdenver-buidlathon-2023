@@ -3,4 +3,4 @@
 	url = https://github.com/messari/subgraphs.git
 [submodule "backend/subgraphs_custom/sporkdao-token"]
 	path = backend/subgraphs_custom/sporkdao-token
-	url = git@github.com:marissaposner/sporkdao-token-subgraph.git
+	url = https://github.com/marissaposner/sporkdao-token-subgraph.git
